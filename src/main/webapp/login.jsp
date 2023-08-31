@@ -10,13 +10,9 @@
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
+	<jsp:include page="error_message.jsp"></jsp:include>
 	<h1>Login Page</h1>
-	<%
-	String errorMessage = request.getParameter("errorMessage");
-	if (errorMessage != null) {
-		out.println("<p>" + errorMessage + "</p>");
-	}
-	%>
+	
 	<form action="login" method="post">
 
 		<label>Email: </label> <input type="email" name="email"

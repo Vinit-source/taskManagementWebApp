@@ -10,13 +10,9 @@
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
+	<jsp:include page="error_message.jsp"></jsp:include>
 	<h1>Add New Task</h1>
-	<%
-	String errorMessage = request.getParameter("errorMessage");
-	if (errorMessage != null) {
-		out.println("<p>" + errorMessage + "</p>");
-	}
-	%>
+	
 	<form action="addNewTask" method="post">
 
 		<label>Task: </label> <input type="taskName" name="taskName"

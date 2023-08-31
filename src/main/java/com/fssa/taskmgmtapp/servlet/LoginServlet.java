@@ -31,37 +31,37 @@ public class LoginServlet extends HttpServlet {
 
 		PrintWriter out = response.getWriter();
 
-//		UserService loginService = new UserService();
-//		try {
-//			if (loginService.login(user)) {
-//				out.println("Login successful!");
-//				HttpSession session = request.getSession();
-//				session.setAttribute("loggedInEmail", email);
-////				request.setAttribute("loggedInEmail", email); // Only the next page or servlet can access the request scope attribute values. 
-//				RequestDispatcher dispatcher = request.getRequestDispatcher("home.html");
-//				dispatcher.forward(request, response);
-//			} else {
-//				out.println("Login failed!");
-//			}
-//		} catch (ServiceException e) {
-//			out.println(e.getMessage());
+		UserService loginService = new UserService();
+		try {
+			if (loginService.login(user)) {
+				out.println("Login successful!");
+				HttpSession session = request.getSession();
+				session.setAttribute("loggedInEmail", email);
+//				request.setAttribute("loggedInEmail", email); // Only the next page or servlet can access the request scope attribute values. 
+				RequestDispatcher dispatcher = request.getRequestDispatcher("home.jsp");
+				dispatcher.forward(request, response);
+			} else {
+				response.sendRedirect("login.jsp?errorMessage=Email is not registered.");
+			}
+		} catch (ServiceException e) {
+			response.sendRedirect("login.jsp?errorMessage=" + e.getMessage());
+		}
+
+//		if (email == null || "".equals(email)) {
+//			out.println("Invalid Email");
+//			response.sendRedirect("login.jsp?errorMessage=Invalid Email");
 //		}
-
-		if (email == null || "".equals(email)) {
-			out.println("Invalid Email");
-			response.sendRedirect("login.jsp?errorMessage=Invalid Email");
-		}
-
-		else if (password == null || "".equals(password) || password.length() < 6) {
-			response.sendRedirect("login.jsp?errorMessage=Invalid Password");
-		} else {
-			out.println("Email and password is valid");
-			HttpSession session = request.getSession();
-			session.setAttribute("loggedInEmail", email);
-//			request.setAttribute("loggedInEmail", email); // Only the next page or servlet can access the request scope attribute values. 
-			RequestDispatcher dispatcher = request.getRequestDispatcher("home.jsp");
-			dispatcher.forward(request, response);
-		}
+//
+//		else if (password == null || "".equals(password) || password.length() < 6) {
+//			response.sendRedirect("login.jsp?errorMessage=Invalid Password");
+//		} else {
+//			out.println("Email and password is valid");
+//			HttpSession session = request.getSession();
+//			session.setAttribute("loggedInEmail", email);
+////			request.setAttribute("loggedInEmail", email); // Only the next page or servlet can access the request scope attribute values. 
+//			RequestDispatcher dispatcher = request.getRequestDispatcher("home.jsp");
+//			dispatcher.forward(request, response);
+//		}
 
 	}
 

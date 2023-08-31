@@ -9,7 +9,7 @@
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
-
+	<jsp:include page="error_message.jsp"></jsp:include>
 	<table class=" table table-bordered">
 		<thead>
 			<tr>
@@ -36,6 +36,7 @@
 			</c:forEach>
 		</tbody>
 	</table>
+	<%session.removeAttribute("taskList"); %>
 	<a href="addNewTask"><button>Add New Task</button></a>
 </body>
 </html>
