@@ -39,22 +39,23 @@ public class GetAllTasksServlet extends HttpServlet {
 			TaskService taskService = new TaskService();
 			try {
 				tasks = taskService.getAllTasks();
-			} catch (ServiceException e) {
+
+//				
+//				tasks.add(new Task(1, "Get groceries", "PENDING"));
+//				tasks.add(new Task(2, "Go for a walk", "PENDING"));
+//				tasks.add(new Task(3, "Wash clothes", "PENDING"));
+				request.setAttribute("taskList", tasks);
+//				HttpSession session = request.getSession(false);
+//				session.setAttribute("taskList", tasks);
+//				System.out.println(session.getAttribute("loggedInEmail"));
+//				request.setAttribute("demoAttribute", "Hi!");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("tasks_list.jsp");
+				dispatcher.forward(request, response);
+			} catch (ServiceException | RuntimeException e) {
 				e.printStackTrace();
-				out.println(e.getMessage());
+				response.sendRedirect("login.jsp?errorMessage=" + e.getMessage());
 			}
 
-//			
-//			tasks.add(new Task(1, "Get groceries", "PENDING"));
-//			tasks.add(new Task(2, "Go for a walk", "PENDING"));
-//			tasks.add(new Task(3, "Wash clothes", "PENDING"));
-			request.setAttribute("taskList", tasks);
-//			HttpSession session = request.getSession(false);
-//			session.setAttribute("taskList", tasks);
-//			System.out.println(session.getAttribute("loggedInEmail"));
-//			request.setAttribute("demoAttribute", "Hi!");
-			RequestDispatcher dispatcher = request.getRequestDispatcher("tasks_list.jsp");
-			dispatcher.forward(request, response);
 		} else {
 			response.sendRedirect("login.jsp?errorMessage=Please login before viewing your tasks.");
 		}
