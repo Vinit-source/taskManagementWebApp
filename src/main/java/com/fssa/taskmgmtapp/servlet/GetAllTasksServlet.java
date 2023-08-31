@@ -44,9 +44,9 @@ public class GetAllTasksServlet extends HttpServlet {
 //		tasks.add(new Task(1, "Get groceries", "PENDING"));
 //		tasks.add(new Task(2, "Go for a walk", "PENDING"));
 //		tasks.add(new Task(3, "Wash clothes", "PENDING"));
-//		request.setAttribute("taskList", tasks);
-		HttpSession session = request.getSession(false);
-		session.setAttribute("taskList", tasks);
+		request.setAttribute("taskList", tasks);
+//		HttpSession session = request.getSession(false);
+//		session.setAttribute("taskList", tasks);
 //		System.out.println(session.getAttribute("loggedInEmail"));
 //		request.setAttribute("demoAttribute", "Hi!");
 		RequestDispatcher dispatcher = request.getRequestDispatcher("tasks_list.jsp");

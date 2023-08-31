@@ -15,11 +15,11 @@
 	integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
 	crossorigin="anonymous"></script>
 <meta charset="ISO-8859-1">
-<title>Edit Task</title>
+<title>Delete Task</title>
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
-	<h1>Edit Task</h1>
+	<h1>Delete Task</h1>
 	
 
 	<!-- TODO: add redirect after clicking Update Task status -->
@@ -27,7 +27,7 @@
 	<!--<c:out value="${editableTask}"/>-->
 	<!--<c:out value="${taskList}"/>-->
 
-	<form action="updateTask" method="post">
+	<form action="deleteTask" method="post">
 		<!-- You need to specify the action and method for form submission -->
 		<label for="taskId">Task ID:</label> <input type="text" id="taskId"
 			name="taskId" value="${toEditTask.id}" readonly>
@@ -37,16 +37,15 @@
 			id="taskName" name="taskName" value="${toEditTask.task}" readonly>
 		<!-- The taskName input field can be used to edit the task name -->
 
-		<!-- <label for="taskStatus">Task Status:</label> <select id="taskStatus"
+		<label for="taskStatus">Task Status:</label> <select id="taskStatus"
 			name="taskStatus">
 			<option value="PENDING"
 				${toEditTask.taskStatus == 'PENDING' ? 'selected' : ''}>Pending</option>
 			<option value="COMPLETED"
-				${toEditTask.taskStatus == 'COMPLETED' ? 'selected' : ''}>Completed</option> -->
+				${toEditTask.taskStatus == 'COMPLETED' ? 'selected' : ''}>Completed</option>
 			<!-- The taskStatus dropdown allows selecting the task status -->
-		<!-- </select> -->
-		<label for="isCompleted">Completed? </label> <input type="checkbox"
-			id="isCompleted" name="isCompleted">
+		</select>
+
 		<button type="submit">Update Task Status</button>
 	</form>
 </body>

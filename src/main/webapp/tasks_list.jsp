@@ -15,8 +15,7 @@
 			<tr>
 				<th>Sr. No.</th>
 				<th>Task</th>
-				<th>Task Status</th>
-				<th>Action</th>
+				<th colspan="2">Action</th>
 
 			</tr>
 		</thead>
@@ -26,8 +25,8 @@
 				<tr>
 					<td><c:out value="${loop.index + 1}" /></td>
 					<td><c:out value="${task.task}" /></td>
-					<td><c:out value="${task.taskStatus}" /></td>
 					<td><a href="updateTask?id=${task.id}">Edit Task Status</a></td>
+					<td><a href="deleteTask?id=${task.id}">Delete Task Status</a></td>
 					<!--<td><form name="submitForm" method="POST"
 							action="/EditTaskServlet">
 							<input type="hidden" name="taskId" value="${task.id}">
@@ -37,6 +36,6 @@
 			</c:forEach>
 		</tbody>
 	</table>
-	<button>Add New Task</button>
+	<a href="addNewTask"><button>Add New Task</button></a>
 </body>
 </html>
